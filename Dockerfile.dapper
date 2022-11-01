@@ -1,0 +1,7 @@
+FROM nixos/nix
+
+COPY nix.conf /etc/nix/nix.conf
+ENV CACHIX_AUTH_TOKEN token
+ENV SHELL /bin/sh
+RUN nix-env -iA cachix -f https://cachix.org/api/v1/install
+WORKDIR /source/
